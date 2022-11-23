@@ -1,31 +1,31 @@
 AWSTemplateFormatVersion : "2010-09-09"
 
 Parameters:
-  DynamoAtributo:
+  DynamoKey:
     Type: String
-  NombreDynamo:
+  DynamoName:
     Type: String
 
 Resources:
-  DynamoDesdeCero:
+  DynamoDBApp:
     Type: AWS::DynamoDB::Table
     Properties:
       AttributeDefinitions:
-        - AttributeName: !Ref DynamoAtributo
+        - AttributeName: !Ref DynamoKey
           AttributeType:  S
       KeySchema:
-        - AttributeName: !Ref DynamoAtributo
+        - AttributeName: !Ref DynamoKey
           KeyType: HASH
       BillingMode: PAY_PER_REQUEST
       SSESpecification:
         SSEEnabled: true
-      TableName: !Ref NombreDynamo
+      TableName: !Ref DynamoName
       
 Outputs:
-  NombreDynamo:
-    Value: !Ref DynamoDesdeCero
+  DynamoName:
+    Value: !Ref DynamoDBApp
     Export:
-      Name: NombreDynamo
+      Name: DynamoName
   DynamoArn:
       Value: !GetAtt Dynamo.Arn
       Export:
