@@ -26,4 +26,8 @@ Outputs:
     Value: !Ref DynamoDesdeCero
     Export:
       Name: NombreDynamo
+  DynamoArn:
+      Value: !GetAtt Dynamo.Arn
+      Export:
+        Name: DynamoArn
 
